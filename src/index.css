@@ -1,0 +1,32 @@
+.tabla-colaboradores {
+    width: 100%;
+    margin: 0 auto; 
+  }
+  .formulario-colaboradores {
+    width: 40%;
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+  }
+  
+  .formulario-titulo {
+    background-color: #343A40;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .mensaje {
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .mensaje-exito {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .mensaje-error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
