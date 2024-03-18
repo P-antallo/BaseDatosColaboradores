@@ -1,4 +1,4 @@
-const Listado = ({ colaboradores }) => {
+const Listado = ({ colaboradores, eliminarColaborador }) => {
   return (
     <table className="table tabla-colaboradores">
       <thead className="table-dark">
@@ -9,6 +9,7 @@ const Listado = ({ colaboradores }) => {
           <th>Edad</th>
           <th>Cargo</th>
           <th>Teléfono</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,14 @@ const Listado = ({ colaboradores }) => {
             <td>{colaborador.edad}</td>
             <td>{colaborador.cargo}</td>
             <td>{colaborador.telefono}</td>
+            <td>
+              <button
+                className="btn btn-danger"
+                onClick={() => eliminarColaborador(colaborador.id)}
+              >
+                Eliminar
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>

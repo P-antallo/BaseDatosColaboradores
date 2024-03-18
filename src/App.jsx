@@ -8,20 +8,27 @@ function App() {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores);
 
   const agregarColaborador = (nuevoColaborador) => {
-    nuevoColaborador.id = (colaboradores.length + 1).toString();
+    const maxId = Math.max(...colaboradores.map(col => parseInt(col.id)), 0);
+    nuevoColaborador.id = (maxId + 1).toString();
     setColaboradores([...colaboradores, nuevoColaborador]);
+  };
+
+  const eliminarColaborador = (id) => {
+    console.log(`Intentando eliminar el colaborador con ID: ${id}`); 
+    const nuevosColaboradores = colaboradores.filter(colaborador => colaborador.id !== id);
+    setColaboradores(nuevosColaboradores);
   };
 
   return (
     <div className="container">
-      <div className="row mb-4"> {/* Agregado el margen inferior con mb-4 */}
+      <div className="row mb-4">
         <div className="col-md-12">
           <Buscador colaboradores={colaboradores} />
         </div>
       </div>
       <div className="row">
         <div className="col-md-6">
-          <Listado colaboradores={colaboradores} />
+          <Listado colaboradores={colaboradores} eliminarColaborador={eliminarColaborador} />
         </div>
         <div className="col-md-6">
           <Formulario agregarColaborador={agregarColaborador} colaboradores={colaboradores} />
