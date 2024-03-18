@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BaseColaboradores } from './BaseColaboradores';
 import Formulario from './assets/Components/Formulario';
 import Listado from './assets/Components/Listado';
 import Buscador from './assets/Components/Buscador';
+import Alert from './assets/Components/Alert';
 
 function App() {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores);
+  const [mensaje, setMensaje] = useState('');
+  const [tipoAlerta, setTipoAlerta] = useState('success');
 
   const agregarColaborador = (nuevoColaborador) => {
     const maxId = Math.max(...colaboradores.map(col => parseInt(col.id)), 0);
     nuevoColaborador.id = (maxId + 1).toString();
     setColaboradores([...colaboradores, nuevoColaborador]);
+    setMensaje('Colaborador agregado exitosamente');
+    setTipoAlerta('success');
   };
 
   const eliminarColaborador = (id) => {
@@ -30,7 +35,8 @@ function App() {
           <Listado colaboradores={colaboradores} eliminarColaborador={eliminarColaborador} />
         </div>
         <div className="col-md-6 col-lg-4">
-          <Formulario agregarColaborador={agregarColaborador} colaboradores={colaboradores} />
+          <Formulario agregarColaborador={agregarColaborador} colaboradores={colaboradores} setMensaje={setMensaje} setTipoAlerta={setTipoAlerta} />
+          {mensaje && <Alert mensaje={mensaje} tipo={tipoAlerta} />}
         </div>
       </div>
     </div>
