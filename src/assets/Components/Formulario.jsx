@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const Formulario = ({ agregarColaborador, colaboradores }) => {
   const [primerNombre, setPrimerNombre] = useState('');

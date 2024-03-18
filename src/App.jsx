@@ -14,7 +14,6 @@ function App() {
   };
 
   const eliminarColaborador = (id) => {
-    console.log(`Intentando eliminar el colaborador con ID: ${id}`); 
     const nuevosColaboradores = colaboradores.filter(colaborador => colaborador.id !== id);
     setColaboradores(nuevosColaboradores);
   };
@@ -27,10 +26,10 @@ function App() {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-6 col-lg-8">
           <Listado colaboradores={colaboradores} eliminarColaborador={eliminarColaborador} />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 col-lg-4">
           <Formulario agregarColaborador={agregarColaborador} colaboradores={colaboradores} />
         </div>
       </div>
